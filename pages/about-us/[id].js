@@ -17,6 +17,7 @@ const details = [
 const Developer = () => {
     const [developer, setDeveloper] = useState({});
     const { id } = useRouter().query;
+
     useEffect(() => {
         setDeveloper(details.find(detail => detail.id === +id))
     }, [id])
