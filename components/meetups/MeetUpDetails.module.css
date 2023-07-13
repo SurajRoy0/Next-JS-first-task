@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  box-shadow: 0 0 0 2px rgb(116, 113, 113);
+  padding: 0 20px;
+}
+
+.img img {
+  max-width: 400px;
+  margin-right: 10px;
+}
+
+.details {
+  margin: 10px;
+}
