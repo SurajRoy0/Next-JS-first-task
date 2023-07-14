@@ -2,7 +2,7 @@ import { MongoClient } from "mongodb";
 
 const handler = async (req, res) => {
     if (req.method === 'GET') {
-        const client = await MongoClient.connect('mongodb+srv://myselfsuraj0:ewTehSdRjCRIMZPs@meetupapp.ybvd392.mongodb.net/meetups?retryWrites=true&w=majority');
+        const client = await MongoClient.connect(process.env.MONGODB_URL);
 
         const db = client.db();
         const meetupsCollection = db.collection('meetups');
