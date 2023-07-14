@@ -48,7 +48,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-  const meetUpId = context.params.meetUpId;
+  const meetUpId = await context.params.meetUpId;
   const place = meetups.find((data) => data.id === meetUpId);
 
   return {

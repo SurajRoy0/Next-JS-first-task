@@ -36,10 +36,21 @@ const Home = ({ meetups }) => {
 
 export default Home;
 
-export const getStaticProps = () => {
+export const getStaticProps = async () => {
+  const res = await fetch("http://localhost:3000/api/meetups");
+  const data = await res.json();
+  const meetups = data.meetups.map((meetup) => {
+    return {
+      id: meetup._id,
+      title: meetup.title,
+      image: meetup.image,
+      address: meetup.address,
+      description: meetup.description,
+    };
+  });
   return {
     props: {
-      meetups: DummyData,
+      meetups: meetups,
     },
   };
 };
