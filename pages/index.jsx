@@ -1,6 +1,6 @@
 import MeetupList from "@/components/meetups/MeetupList";
 
-const meetups = [
+const DummyData = [
   {
     id: "m1",
     title: "First Meet Up",
@@ -30,8 +30,16 @@ const meetups = [
   },
 ];
 
-const Home = () => {
+const Home = ({ meetups }) => {
   return <MeetupList meetups={meetups} />;
 };
 
 export default Home;
+
+export const getStaticProps = () => {
+  return {
+    props: {
+      meetups: DummyData,
+    },
+  };
+};

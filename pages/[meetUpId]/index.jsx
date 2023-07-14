@@ -32,21 +32,30 @@ const meetups = [
   },
 ];
 
-const MeetUpPlace = () => {
-  const [place, setPlace] = useState({});
-  const router = useRouter();
-  const { meetUpId } = router.query;
-
-  useEffect(() => {
-    if (meetUpId) {
-      setPlace(meetups.find((data) => data.id === meetUpId));
-    }
-  }, [meetUpId]);
-
-  console.log(meetUpId);
-  console.log(place);
-
+const MeetUpPlace = ({ place }) => {
   return <MeetUpDetails place={place} />;
 };
+
+export async function getStaticPaths() {
+  const paths = meetups.map((meetup) => ({
+    params: { meetUpId: meetup.id },
+  }));
+
+  return {
+    fallback: false,
+    paths,
+  };
+}
+
+export async function getStaticProps(context) {
+  const meetUpId = context.params.meetUpId;
+  const place = meetups.find((data) => data.id === meetUpId);
+
+  return {
+    props: {
+      place,
+    },
+  };
+}
 
 export default MeetUpPlace;
