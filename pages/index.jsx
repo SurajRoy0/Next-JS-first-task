@@ -1,4 +1,5 @@
 import MeetupList from "@/components/meetups/MeetupList";
+import Head from "next/head";
 
 const DummyData = [
   {
@@ -31,7 +32,14 @@ const DummyData = [
 ];
 
 const Home = ({ meetups }) => {
-  return <MeetupList meetups={meetups} />;
+  return (
+    <>
+      <Head>
+        <title>Meetup App</title>
+      </Head>
+      <MeetupList meetups={meetups} />
+    </>
+  );
 };
 
 export default Home;
